@@ -1,0 +1,15 @@
+<%= content_for?(:secondary_column) ? yield(:secondary_column) : render(:partial => 'odania/widgets/default') %>
+
+<ul class="nav nav-list">
+	<li class="nav-header"><%= t('Browse') %></li>
+	<li<%= menu_active('browse', 'newest') %>><%= link_to t('10 Newest'), root_path %></li>
+	<li class="nav-header"><%= t('Top Categories') %></li>
+
+	<li class="nav-header"><%= t('Newest Pages') %></li>
+
+	<% if '@subdomain.is_master' %>
+		<li class="nav-header"><%= t('Newest Domains') %></li>
+
+		<%= link_to t('more domains'), root_path %>
+	<% end %>
+</ul>

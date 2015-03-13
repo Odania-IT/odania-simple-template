@@ -1,0 +1,12 @@
+<% if user_signed_in? %>
+	<li><%= link_to t('Logout'), '/logout', :method => :delete %></li>
+<% end %>
+
+<% if current_site.user_signup_allowed %>
+	<li><a href="<%= new_entry_path %>"<%= menu_active('entries', 'new') %>><%= t('Add Entry') %></a></li>
+
+	<% unless user_signed_in? %>
+		<li<%= menu_active('devise/sessions', 'new') %>><%= link_to t('Login'), user_session_path %></li>
+		<li<%= menu_active('devise/registrations', 'new') %>><%= link_to t('SignUp'), new_user_registration_path %></li>
+	<% end %>
+<% end %>

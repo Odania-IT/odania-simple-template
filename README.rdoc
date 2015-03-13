@@ -1,0 +1,5 @@
+= OdaniaSimpleTemplate
+
+Simple Template example for the Odania Portal. This is incomplete and should just be used as a reference.
+
+This project rocks and uses MIT-LICENSE.

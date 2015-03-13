@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head profile="http://purl.org/uF/hAtom/0.1/ http://purl.org/uF/2008/03/">
+	<title><%= content_for?(:title) ? strip_tags(yield(:title)) : strip_tags(current_site.name) %></title>
+	<meta name="language" content="<%= I18n.locale %>"/>
+	<%= stylesheet_link_tag 'odania_simple_template/application', media: 'all' %>
+	<%= javascript_include_tag 'odania_simple_template/application' %>
+	<%= csrf_meta_tags %>
+	<%= yield(:head) %>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="Mike Petersen Odania IT">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<%= render :partial => 'common/odania_simple_template/top_menu' %>
+	</div>
+</div>
+
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="col-md-3" style="margin-top: 60px;">
+			<div class="well sidebar-nav">
+				<%= render :partial => 'common/odania_simple_template/left_menu' %>
+			</div>
+			<!--/.well -->
+		</div>
+		<!--/span-->
+
+		<div class="col-md-9 hfeed" style="margin-top: 60px;">
+			<%= render :partial => 'common/odania_simple_template/flashes' %>
+
+			<% if content_for?(:page_header) %>
+				<div class="hero-unit">
+					<%= yield(:page_header) %>
+				</div>
+			<% end %>
+			<%= yield %>
+		</div>
+		<!--/span-->
+	</div>
+	<!--/row-->
+
+	<hr/>
+
+	<%= render :partial => 'common/odania_simple_template/footer' %>
+
+</div>
+<!--/.fluid-container-->
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!-- Static navbar -->
+<div class="navbar navbar-default navbar-static-top" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="/"><%= current_site.name %></a>
+		</div>
+		<div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li<%= menu_active('welcome') %>><a href="<%= root_path %>"><%= t('Home') %></a></li>
+
+				<% if user_signed_in? %>
+					<li<%= menu_active('dashboard') %>><%= link_to t('Dashboard'), admin_path %></li>
+					<li><a href="#about">Account</a></li>
+				<% end %>
+
+				<li<%= menu_active('pages', 'imprint') %>><%= link_to t('Imprint'), imprint_path %></li>
+				<li<%= menu_active('contact') %>><%= link_to t('Contact'), contact_path %></li>
+
+				<%= render :partial => 'common/odania_simple_template/user_menu_actions' %>
+			</ul>
+			<% if user_signed_in? %>
+				<p class="navbar-text pull-right"><%= t('Logged in as', name: current_user.name) %></p>
+			<% end %>
+		</div>
+		<!--/.nav-collapse -->
+	</div>
+	<!--/.nav-collapse -->
+</div>
